@@ -1,8 +1,8 @@
 var CartItem = require("../../models/cartitem.js");
 describe("cartitem", function() {
+  var item = new CartItem('ITEM000001', 5);
   describe("constructor", function() {
     it("should accept barcode and count as parameters", function() {
-      var item = new CartItem('ITEM000001', 5);
       expect(item.barcode).toBe('ITEM000001');
       expect(item.count).toBe(5);
     });
@@ -10,7 +10,6 @@ describe("cartitem", function() {
 
   describe("cartitem_getinfo", function() {
     it("base in barcode get item information", function() {
-      var item = new CartItem('ITEM000001', 5);
       var itemInfo = item.getInfo();
       expect(itemInfo.barcode).toBe('ITEM000001');
       expect(itemInfo.name).toBe('雪碧');
@@ -21,7 +20,6 @@ describe("cartitem", function() {
 
   describe("cartitem_getPromotionCount", function() {
     it("get promotion count base in barcode and count", function() {
-      var item = new CartItem('ITEM000001', 5);
       var prmotioncount = item.getPromotionCount();
       expect(prmotioncount).toBe(1);
     });
@@ -29,16 +27,14 @@ describe("cartitem", function() {
 
   describe("cartitem_subtotal", function() {
     it("get total base in barcode and count", function() {
-      var item = new CartItem('ITEM000001', 5);
       var total = item.subTotal();
       expect(total).toBe(12.00);
     });
   });
-  describe("cartitem_getPromotionTotal",function(){
-    it("get promotion total base in barcode and count",function(){
-        var item = new CartItem('ITEM000001', 5);
-        var promotiontotal=item.getPromotionTotal();
-        expect(promotiontotal).toBe(3.00);
+  describe("cartitem_getPromotionTotal", function() {
+    it("get promotion total base in barcode and count", function() {
+      var promotiontotal = item.getPromotionTotal();
+      expect(promotiontotal).toBe(3.00);
     });
   });
 });
